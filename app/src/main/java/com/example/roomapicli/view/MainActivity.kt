@@ -1,7 +1,8 @@
-package com.example.roomapicli
+package com.example.roomapicli.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.roomapicli.R
 
 class MainActivity : AppCompatActivity() {
 
