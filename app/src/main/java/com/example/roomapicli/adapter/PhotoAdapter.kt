@@ -7,19 +7,25 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.roomapicli.model.Photo
 import com.example.roomapicli.R
 import com.example.roomapicli.databinding.ItemPhotoBinding
+import com.example.roomapicli.model.Photo
 import com.example.roomapicli.viewmodel.ItemsPhotoViewModel
 
 
-class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>):RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
+class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>) :
+    RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
     private val listPhotoData = listPhotos
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_photo, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_photo,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount() = listPhotoData.size
@@ -32,12 +38,8 @@ class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding: ItemPhotoBinding? = DataBindingUtil.bind(view)
 
-        fun bind(item : Photo) {
-
-            //itemView.setOnClickListener{liveData.value = item}
-
-            binding?.itemsPhotoViewModel = ItemsPhotoViewModel(item ,liveData)
-
+        fun bind(item: Photo) {
+            binding?.itemsPhotoViewModel = ItemsPhotoViewModel(item, liveData)
             binding?.imagePhoto?.context?.let {
                 Glide.with(it).load(item.url).into(binding.imagePhoto)
             }
