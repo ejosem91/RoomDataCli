@@ -11,9 +11,9 @@ class RepositoryGetPhoto(private val dataBase: PhotoDataBase?) {
     suspend fun getPhotoDataAPI(): MutableLiveData<List<Photo>> {
         val liveData = MutableLiveData<List<Photo>>()
         val listPhoto = client.getPhotosAsync().await()
-        val cutList = listPhoto.subList(0, 24)
+        val getShortList = listPhoto.subList(0, 24)
 
-        cutList.forEach {
+        getShortList.forEach {
             dataBase?.photoDao()?.insert(it)
         }
         liveData.postValue(dataBase?.photoDao()?.getAll())
