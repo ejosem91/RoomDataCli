@@ -19,9 +19,7 @@ import androidx.room.PrimaryKey
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
-    ) {
-    }
-
+    )
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
         parcel.writeInt(albumId)

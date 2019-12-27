@@ -1,7 +1,6 @@
 package com.example.roomapicli.viewmodel
 
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.roomapicli.model.Photo
 import com.example.roomapicli.repository.RepositoryGetPhoto
@@ -11,17 +10,12 @@ import kotlinx.coroutines.withContext
 
 class PhotoViewModel(private val repositoryGetPhoto: RepositoryGetPhoto) : ViewModel() {
 
-
-    init{
+    init {
         getPhotoList()
     }
 
-//    fun getListPhoto(): MutableLiveData<List<Photo>> {
-//        return repositoryGetPhoto.getPhotoData()
-//    }
-
     var liveData: MutableLiveData<Photo> = MutableLiveData()
-    var photoListLiveDataSource: MutableLiveData<List<Photo>> = MutableLiveData()
+    private var photoListLiveDataSource: MutableLiveData<List<Photo>> = MutableLiveData()
 
     var photoListData = MediatorLiveData<List<Photo>>()
 

@@ -17,16 +17,8 @@ class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>
     RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
     private val listPhotoData = listPhotos
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_photo,
-                parent,
-                false
-            )
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_photo, parent, false))
 
     override fun getItemCount() = listPhotoData.size
 
