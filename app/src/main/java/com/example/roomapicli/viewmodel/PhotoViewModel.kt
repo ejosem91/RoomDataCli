@@ -14,7 +14,7 @@ class PhotoViewModel(private val repositoryGetPhoto: RepositoryGetPhoto) : ViewM
         getPhotoList()
     }
 
-    var liveData: MutableLiveData<Photo> = MutableLiveData()
+    var liveDataEvent: MutableLiveData<Photo> = MutableLiveData()
     private var photoListLiveDataSource: MutableLiveData<List<Photo>> = MutableLiveData()
 
     var photoListData = MediatorLiveData<List<Photo>>()

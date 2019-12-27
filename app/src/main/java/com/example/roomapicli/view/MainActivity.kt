@@ -32,12 +32,12 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this,viewModelFactory).get(PhotoViewModel::class.java)
         binding.viewModel = viewModel
         show()
-        viewModel.liveData.observe( this , clickObserver() )
+        viewModel.liveDataEvent.observe( this , clickObserver() )
     }
 
     private fun show() {
         viewModel.photoListData.observe(this, Observer {
-            val adapterPhotos = PhotoAdapter(it,viewModel.liveData)
+            val adapterPhotos = PhotoAdapter(it,viewModel.liveDataEvent)
             binding.photoRecycler.layoutManager = LinearLayoutManager(this)
             binding.photoRecycler.adapter = adapterPhotos
         })
