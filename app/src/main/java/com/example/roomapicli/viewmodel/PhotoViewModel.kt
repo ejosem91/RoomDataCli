@@ -1,7 +1,10 @@
 package com.example.roomapicli.viewmodel
 
 
-import androidx.lifecycle.*
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.roomapicli.model.Photo
 import com.example.roomapicli.repository.RepositoryGetPhoto
 import kotlinx.coroutines.Dispatchers
@@ -24,12 +27,5 @@ class PhotoViewModel(private val repositoryGetPhoto: RepositoryGetPhoto) : ViewM
             photoListLiveDataSource = repositoryGetPhoto.getPhotoDataAPI()
         }
         photoListData.value = photoListLiveDataSource.value
-    }
-}
-
-class FactoryPhotoViewModel(private val photoDao: RepositoryGetPhoto) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return PhotoViewModel(photoDao) as T
     }
 }
