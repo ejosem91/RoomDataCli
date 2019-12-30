@@ -12,10 +12,7 @@ class RepositoryGetPhoto(private val dataBase: PhotoDataBase?) {
         val liveData = MutableLiveData<List<Photo>>()
         val listPhoto = client.getPhotosAsync().await()
         val getShortList = listPhoto.subList(0, 24)
-
-        getShortList.forEach {
-            dataBase?.photoDao()?.insert(it)
-        }
+        dataBase?.photoDao()?.insert(getShortList)
         liveData.postValue(dataBase?.photoDao()?.getAll())
         return liveData
     }
