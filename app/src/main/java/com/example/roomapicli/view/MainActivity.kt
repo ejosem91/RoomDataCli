@@ -14,7 +14,7 @@ import com.example.roomapicli.database.PhotoDataBase
 import com.example.roomapicli.databinding.ActivityMainBinding
 import com.example.roomapicli.model.Photo
 import com.example.roomapicli.repository.RepositoryGetPhoto
-import com.example.roomapicli.viewmodel.FactoryPhotoViewModel
+import com.example.roomapicli.viewmodel.util.FactoryPhotoViewModel
 import com.example.roomapicli.viewmodel.PhotoViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +27,10 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val db :PhotoDataBase?  = PhotoDataBase.getInstance(context =  applicationContext)
-        val viewModelFactory = FactoryPhotoViewModel(RepositoryGetPhoto(db))
+        val viewModelFactory =
+            FactoryPhotoViewModel(
+                RepositoryGetPhoto(db)
+            )
 
         viewModel = ViewModelProviders.of(this,viewModelFactory).get(PhotoViewModel::class.java)
         binding.viewModel = viewModel

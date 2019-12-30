@@ -12,9 +12,9 @@ import com.example.roomapicli.databinding.ItemPhotoBinding
 import com.example.roomapicli.model.Photo
 import com.example.roomapicli.viewmodel.ItemsPhotoViewModel
 
-
 class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>) :
     RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
+
     private val listPhotoData = listPhotos
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -24,7 +24,6 @@ class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listPhotoData[position])
-
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

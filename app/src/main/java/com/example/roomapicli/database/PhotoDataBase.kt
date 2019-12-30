@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.roomapicli.model.Photo
 
-
 @Database(entities = [Photo::class], version = 1, exportSchema = false)
 abstract class PhotoDataBase : RoomDatabase() {
-    abstract  fun photoDao() : PhotoDao
+
+    abstract fun photoDao(): PhotoDao
+
     companion object {
         private var INSTANCE: PhotoDataBase? = null
         fun getInstance(context: Context): PhotoDataBase {

@@ -4,15 +4,17 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+
 @Entity(tableName = "photo")
- class Photo (
+class Photo(
     @PrimaryKey
-    var id : Int?,
-    var albumId : Int,
-    var title : String?,
-    var url : String?,
-    var thumbnailUrl : String?
-): Parcelable {
+    var id: Int?,
+    var albumId: Int,
+    var title: String?,
+    var url: String?,
+    var thumbnailUrl: String?
+) : Parcelable {
+
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readInt(),
@@ -20,6 +22,7 @@ import androidx.room.PrimaryKey
         parcel.readString(),
         parcel.readString()
     )
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
         parcel.writeInt(albumId)
@@ -28,17 +31,11 @@ import androidx.room.PrimaryKey
         parcel.writeString(thumbnailUrl)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents() = 0
 
     companion object CREATOR : Parcelable.Creator<Photo> {
-        override fun createFromParcel(parcel: Parcel): Photo {
-            return Photo(parcel)
-        }
+        override fun createFromParcel(parcel: Parcel) = Photo(parcel)
 
-        override fun newArray(size: Int): Array<Photo?> {
-            return arrayOfNulls(size)
-        }
+        override fun newArray(size: Int): Array<Photo?> = arrayOfNulls(size)
     }
 }
