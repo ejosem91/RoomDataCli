@@ -4,7 +4,8 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object Api{
+object Api {
+
     private const val url = "https://jsonplaceholder.typicode.com/"
     /**
      * @return Retrofit instance for getting API data
@@ -17,5 +18,4 @@ object Api{
             .build()
         return retrofit.create(ApiInterface::class.java)
     }
-
 }

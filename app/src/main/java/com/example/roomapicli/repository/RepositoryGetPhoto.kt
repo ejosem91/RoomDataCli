@@ -19,5 +19,4 @@ class RepositoryGetPhoto(private val dataBase: PhotoDataBase?) {
         liveData.postValue(dataBase?.photoDao()?.getAll())
         return liveData
     }
-
 }

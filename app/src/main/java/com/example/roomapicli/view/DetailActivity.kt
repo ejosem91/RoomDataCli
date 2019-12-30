@@ -1,8 +1,8 @@
 package com.example.roomapicli.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
@@ -13,11 +13,9 @@ import com.example.roomapicli.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
 
-
-    private  lateinit var  binding : ActivityDetailBinding
+    private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
     private var photos: Photo? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +31,13 @@ class DetailActivity : AppCompatActivity() {
         binding.detailViewModel = detailViewModel
         setImageUrl(binding.detailedImage, photos)
     }
+
     private fun setImageUrl(view: ImageView, detailModel: Photo?) {
         Glide.with(view.context).load(detailModel?.url)
             .into(view)
     }
 
-    companion object{
+    companion object {
         const val BUNDLE_KEY = "details"
     }
 }
