@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    >
-    <data >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
         <variable
             name="detailViewModel"
             type="com.example.roomapicli.viewmodel.DetailViewModel" />
     </data>
+
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/detailed_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/detailed_image">
-    </androidx.appcompat.widget.AppCompatImageView>
+        android:layout_height="wrap_content" />
 </layout>
