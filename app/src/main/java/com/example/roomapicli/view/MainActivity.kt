@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomapicli.R
 import com.example.roomapicli.adapter.PhotoAdapter
-import com.example.roomapicli.database.PhotoDataBase
+import com.example.data.database.PhotoDataBase
 import com.example.roomapicli.databinding.ActivityMainBinding
 import com.example.roomapicli.model.Photo
 import com.example.roomapicli.repository.RepositoryGetPhoto
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val db :PhotoDataBase?  = PhotoDataBase.getInstance(context =  applicationContext)
+        val db : PhotoDataBase?  = PhotoDataBase.getInstance(context =  applicationContext)
         val viewModelFactory = FactoryPhotoViewModel(RepositoryGetPhoto(db))
 
         viewModel = ViewModelProviders.of(this,viewModelFactory).get(PhotoViewModel::class.java)
@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             binding.photoRecycler.layoutManager = LinearLayoutManager(this)
             binding.photoRecycler.adapter = adapterPhotos
         })
-
     }
 
     private  fun clickObserver() = Observer<Photo> {

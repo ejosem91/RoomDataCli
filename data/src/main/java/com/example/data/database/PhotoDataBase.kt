@@ -1,12 +1,10 @@
-package com.example.roomapicli.database
+package com.example.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.data.database.PhotoDao
-import com.example.data.database.PhotoDataBase
-import com.example.roomapicli.model.Photo
+import com.example.data.model.Photo
 
 
 @Database(entities = [Photo::class], version = 1, exportSchema = false)
