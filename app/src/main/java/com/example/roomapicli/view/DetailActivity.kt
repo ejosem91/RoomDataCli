@@ -16,18 +16,16 @@ import com.example.roomapicli.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
 
-
     private  lateinit var  binding : ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
-    private var photos: Photo? = null
-
+    private var photos: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
         val bundleReceived = intent.extras
-        bundleReceived?.getParcelable<Photo>(BUNDLE_KEY).let { photos = it }
+        bundleReceived?.getString(BUNDLE_KEY).let { photos = it }
         binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_detail
@@ -36,8 +34,8 @@ class DetailActivity : AppCompatActivity() {
         binding.detailViewModel = detailViewModel
         setImageUrl(binding.detailedImage, photos)
     }
-    private fun setImageUrl(view: ImageView, detailModel: Photo?) {
-        Glide.with(view.context).load(detailModel?.url)
+    private fun setImageUrl(view: ImageView, detailModel: String?) {
+        Glide.with(view.context).load(detailModel)
             .into(view)
     }
 
