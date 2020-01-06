@@ -5,7 +5,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.core.model.Photo
-import com.example.data.domain.mapperDomain
+import com.example.data.domain.MapperDomain
 
 @Entity(tableName = "photo")
 class PhotoEntity(
@@ -15,7 +15,7 @@ class PhotoEntity(
     var title: String?,
     var url: String?,
     var thumbnailUrl: String?
-) : Parcelable, mapperDomain<Photo> {
+) : Parcelable, MapperDomain<Photo> {
     override fun mapToDomainModel() =
         Photo(id = id, albumId = albumId, title =  title, url = url, thumbnailUrl = thumbnailUrl)
 
