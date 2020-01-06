@@ -8,12 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.core.model.Photo
 import com.example.roomapicli.R
 import com.example.roomapicli.adapter.PhotoAdapter
-import com.example.data.database.PhotoDataBase
 import com.example.roomapicli.databinding.ActivityMainBinding
-import com.example.roomapicli.model.Photo
-import com.example.roomapicli.repository.RepositoryGetPhoto
+import com.example.roomapicli.util.Initialize
 import com.example.roomapicli.viewmodel.FactoryPhotoViewModel
 import com.example.roomapicli.viewmodel.PhotoViewModel
 
@@ -26,24 +25,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val db : PhotoDataBase?  = PhotoDataBase.getInstance(context =  applicationContext)
-        val viewModelFactory = FactoryPhotoViewModel(RepositoryGetPhoto(db))
+        val viewModelFactory = FactoryPhotoViewModel((application as Initialize).useCase)
 
-        viewModel = ViewModelProviders.of(this,viewModelFactory).get(PhotoViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(PhotoViewModel::class.java)
         binding.viewModel = viewModel
         show()
-        viewModel.liveDataEvent.observe( this , clickObserver() )
+        viewModel.liveDataEvent.observe(this, clickObserver())
     }
 
     private fun show() {
         viewModel.photoListData.observe(this, Observer {
-            val adapterPhotos = PhotoAdapter(it,viewModel.liveDataEvent)
+            val adapterPhotos = PhotoAdapter(it, viewModel.liveDataEvent)
             binding.photoRecycler.layoutManager = LinearLayoutManager(this)
             binding.photoRecycler.adapter = adapterPhotos
         })
     }
 
-    private  fun clickObserver() = Observer<Photo> {
+    private fun clickObserver() = Observer<Photo> {
         val detailClassIntent = Intent(this, DetailActivity::class.java)
         val bundle = Bundle()
         bundle.putParcelable(BUNDLE_KEY, it)
@@ -51,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         ContextCompat.startActivity(this, detailClassIntent, null)
     }
 
-    companion object{
+    companion object {
         const val BUNDLE_KEY = "details"
     }
 }
