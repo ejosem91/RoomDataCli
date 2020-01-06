@@ -13,7 +13,7 @@ class Photo (
     var title : String?,
     var url : String?,
     var thumbnailUrl : String?
-): Parcelable {
+): Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readInt(),
