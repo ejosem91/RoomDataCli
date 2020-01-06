@@ -12,7 +12,6 @@ import com.example.roomapicli.R
 import com.example.roomapicli.databinding.ItemPhotoBinding
 import com.example.roomapicli.viewmodel.ItemsPhotoViewModel
 
-
 class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>) :
     RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
     private val listPhotoData = listPhotos
@@ -24,7 +23,6 @@ class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listPhotoData[position])
-
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -35,7 +33,6 @@ class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>
             binding?.imagePhoto?.context?.let {
                 Glide.with(it).load(item.url).into(binding.imagePhoto)
             }
-
         }
     }
 }
