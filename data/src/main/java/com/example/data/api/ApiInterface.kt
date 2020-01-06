@@ -1,6 +1,6 @@
-package com.example.roomapicli.api
+package com.example.data.api
 
-import com.example.roomapicli.model.Photo
+import com.example.data.model.Photo
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 

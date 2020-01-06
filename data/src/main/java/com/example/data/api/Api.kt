@@ -1,6 +1,5 @@
 package com.example.data.api
 
-import com.example.roomapicli.api.ApiInterface
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
