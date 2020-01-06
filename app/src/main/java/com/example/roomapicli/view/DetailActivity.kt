@@ -6,9 +6,12 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.example.core.model.Photo
+
+
 import com.example.roomapicli.R
 import com.example.roomapicli.databinding.ActivityDetailBinding
-import com.example.roomapicli.model.Photo
+
 import com.example.roomapicli.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
