@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun clickObserver() = Observer<Photo> {
         val detailClassIntent = Intent(this, DetailActivity::class.java)
         val bundle = Bundle()
-        bundle.putParcelable(BUNDLE_KEY, it)
+        bundle.putString(BUNDLE_KEY, it.url)
         detailClassIntent.putExtras(bundle)
         ContextCompat.startActivity(this, detailClassIntent, null)
     }
