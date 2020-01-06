@@ -7,9 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.core.model.Photo
 import com.example.roomapicli.R
 import com.example.roomapicli.databinding.ItemPhotoBinding
-import com.example.roomapicli.model.Photo
 import com.example.roomapicli.viewmodel.ItemsPhotoViewModel
 
 
