@@ -1,6 +1,6 @@
 package com.example.data.model
 
-import com.example.data.domain.mapperRoom
+import com.example.data.domain.MapperRoom
 
 class Photo(
     var id: Int?,
@@ -8,7 +8,7 @@ class Photo(
     var title: String?,
     var url: String?,
     var thumbnailUrl: String?
-) : mapperRoom<PhotoEntity> {
+) : MapperRoom<PhotoEntity> {
     override fun mapToRoomModel() =
         PhotoEntity(id = id, albumId = albumId, title = title, url = url, thumbnailUrl = thumbnailUrl)
 }
