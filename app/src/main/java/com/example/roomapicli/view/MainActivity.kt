@@ -12,6 +12,7 @@ import com.example.core.model.Photo
 import com.example.roomapicli.R
 import com.example.roomapicli.adapter.PhotoAdapter
 import com.example.roomapicli.databinding.ActivityMainBinding
+import com.example.roomapicli.util.Event
 import com.example.roomapicli.util.Initialize
 import com.example.roomapicli.viewmodel.FactoryPhotoViewModel
 import com.example.roomapicli.viewmodel.PhotoViewModel
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         show()
         viewModel.liveDataEvent.observe(this, clickObserver())
+
     }
 
     private fun show() {
@@ -41,12 +43,14 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun clickObserver() = Observer<Photo> {
-        val detailClassIntent = Intent(this, DetailActivity::class.java)
-        val bundle = Bundle()
-        bundle.putString(BUNDLE_KEY, it.url)
-        detailClassIntent.putExtras(bundle)
-        ContextCompat.startActivity(this, detailClassIntent, null)
+    private fun clickObserver() = Observer<Event<Photo>> { event ->
+        event.getContentIfNotHandled()?.let { photo ->
+            val detailClassIntent = Intent(this, DetailActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString(BUNDLE_KEY, photo.url)
+            detailClassIntent.putExtras(bundle)
+            ContextCompat.startActivity(this, detailClassIntent, null)
+        }
     }
 
     companion object {
