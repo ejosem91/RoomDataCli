@@ -10,9 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.core.model.Photo
 import com.example.roomapicli.R
 import com.example.roomapicli.databinding.ItemPhotoBinding
+import com.example.roomapicli.util.Event
 import com.example.roomapicli.viewmodel.ItemsPhotoViewModel
 
-class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>) :
+class PhotoAdapter(listPhotos: List<Photo>, val photoEvent: MutableLiveData<Event<Photo>>) :
     RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
     private val listPhotoData = listPhotos
 
@@ -29,7 +30,7 @@ class PhotoAdapter(listPhotos: List<Photo>, val liveData: MutableLiveData<Photo>
         private val binding: ItemPhotoBinding? = DataBindingUtil.bind(view)
 
         fun bind(item: Photo) {
-            binding?.itemsPhotoViewModel = ItemsPhotoViewModel(item, liveData)
+            binding?.itemsPhotoViewModel = ItemsPhotoViewModel(item, photoEvent)
             binding?.imagePhoto?.context?.let {
                 Glide.with(it).load(item.url).into(binding.imagePhoto)
             }
