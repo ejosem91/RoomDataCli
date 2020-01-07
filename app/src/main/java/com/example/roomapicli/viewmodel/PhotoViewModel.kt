@@ -4,6 +4,7 @@ package com.example.roomapicli.viewmodel
 import androidx.lifecycle.*
 import com.example.core.model.Photo
 import com.example.core.usecase.PhotoUseCase
+import com.example.roomapicli.util.Event
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -14,7 +15,8 @@ class PhotoViewModel(private val userCase: PhotoUseCase) : ViewModel() {
         getPhotoList()
     }
 
-    var liveDataEvent: MutableLiveData<Photo> = MutableLiveData()
+    var liveDataEvent: MutableLiveData<Event<Photo>> = MutableLiveData()
+
     private var photoListLiveDataSource: LiveData<MutableList<Photo>> = MutableLiveData()
 
     var photoListData = MediatorLiveData<List<Photo>>()
