@@ -13,6 +13,6 @@ interface PhotoDao {
     fun getAll():  List<PhotoEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(photo : PhotoEntity)
+    fun insert(photo : List<PhotoEntity>)
 
 }
