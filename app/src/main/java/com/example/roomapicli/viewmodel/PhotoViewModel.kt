@@ -28,10 +28,3 @@ class PhotoViewModel(private val userCase: PhotoUseCase) : ViewModel() {
         photoListData.value = photoListLiveDataSource.value
     }
 }
-
-class FactoryPhotoViewModel(private val useCasePhoto: PhotoUseCase) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return PhotoViewModel(useCasePhoto) as T
-    }
-}
