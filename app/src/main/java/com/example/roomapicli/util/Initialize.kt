@@ -8,6 +8,7 @@ import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
+@Suppress("UNUSED_PARAMETER", "unused")
 class Initialize : Application() {
 
     override fun onCreate() {
