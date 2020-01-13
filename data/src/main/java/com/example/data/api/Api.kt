@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Api{
 
-    private val url = "https://jsonplaceholder.typicode.com/"
+    private const val url = "https://jsonplaceholder.typicode.com/"
     /**
      * @return Retrofit instance for getting API data
      **/
