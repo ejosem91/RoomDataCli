@@ -6,33 +6,27 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.model.Photo
 import com.example.roomapicli.R
 import com.example.roomapicli.adapter.PhotoAdapter
 import com.example.roomapicli.databinding.ActivityMainBinding
 import com.example.roomapicli.util.Event
-import com.example.roomapicli.util.Initialize
-import com.example.roomapicli.viewmodel.FactoryPhotoViewModel
 import com.example.roomapicli.viewmodel.PhotoViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: PhotoViewModel
+    private val viewModel by viewModel<PhotoViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        val viewModelFactory = FactoryPhotoViewModel((application as Initialize).useCase)
-
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(PhotoViewModel::class.java)
         binding.viewModel = viewModel
         show()
         viewModel.liveDataEvent.observe(this, clickObserver())
-
     }
 
     private fun show() {
