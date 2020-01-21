@@ -18,7 +18,7 @@ class Initialize : Application() {
             androidLogger()
             androidContext(this@Initialize)
             androidFileProperties()
-            modules(listOf(appModule, repositoryModule))
+                modules(listOf(appModule, repositoryModule))
         }
     }
 }

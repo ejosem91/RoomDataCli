@@ -19,13 +19,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
     private val viewModel by viewModel<PhotoViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         binding.viewModel = viewModel
+
         show()
+        viewModel.getPhotoList()
         viewModel.liveDataEvent.observe(this, clickObserver())
     }
 

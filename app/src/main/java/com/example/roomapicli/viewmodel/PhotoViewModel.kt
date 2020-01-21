@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PhotoViewModel(private val userCase: PhotoUseCase) : ViewModel() {
-    
+
     var liveDataEvent: MutableLiveData<Event<Photo>> = MutableLiveData()
 
     private var photoListLiveDataSource: LiveData<MutableList<Photo>> = MutableLiveData()
