@@ -10,21 +10,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PhotoViewModel(private val userCase: PhotoUseCase) : ViewModel() {
-
-    init {
-        getPhotoList()
-    }
-
+    
     var liveDataEvent: MutableLiveData<Event<Photo>> = MutableLiveData()
 
     private var photoListLiveDataSource: LiveData<MutableList<Photo>> = MutableLiveData()
 
     var photoListData = MediatorLiveData<List<Photo>>()
 
-    private fun getPhotoList() = viewModelScope.launch(Dispatchers.Main) {
+    fun getPhotoList() = viewModelScope.launch(Dispatchers.Main) {
         withContext(Dispatchers.IO) {
             photoListLiveDataSource = userCase.getPhotoData()
         }
         photoListData.value = photoListLiveDataSource.value
     }
 }
+
