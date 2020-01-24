@@ -21,12 +21,10 @@ class PhotoDataRepositoryImpl(private val api: ApiInterface, private val dataBas
         dataBaseDao.insert(listItem)
 
         val listItems: MutableList<Photo> = mutableListOf()
-
         dataBaseDao.getAll().forEach {
             listItems.add(it.mapToDomainModel())
         }
         liveData.postValue(listItems)
-
         return liveData
     }
 }

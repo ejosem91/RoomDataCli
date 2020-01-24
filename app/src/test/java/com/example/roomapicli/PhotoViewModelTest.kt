@@ -42,11 +42,8 @@ class PhotoViewModelTest {
             )
 
             photoDataRepository = mock(PhotoDataRepositoryImpl::class.java)
-
             `when`(photoDataRepository.getDataPhoto()).thenReturn(mutableLiveData)
-
             useCase = PhotoUseCase(photoDataRepository)
-
             viewModelPhoto = PhotoViewModel(useCase)
         }
     }
