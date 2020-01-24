@@ -17,11 +17,15 @@ class PhotoViewModel(private val userCase: PhotoUseCase) : ViewModel() {
 
     var photoListData = MediatorLiveData<List<Photo>>()
 
-    fun getPhotoList() = viewModelScope.launch(Dispatchers.Main) {
-        withContext(Dispatchers.IO) {
-            photoListLiveDataSource = userCase.getPhotoData()
+    fun getPhotoList(): MediatorLiveData<List<Photo>>{
+        viewModelScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                photoListLiveDataSource = userCase.getPhotoData()
+            }
+            photoListData.value = photoListLiveDataSource.value
+
         }
-        photoListData.value = photoListLiveDataSource.value
+        return photoListData
     }
 }
 
